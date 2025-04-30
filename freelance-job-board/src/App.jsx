@@ -1,16 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from "react-router-dom";
 
-function App() {
- 
 
+export default function App() {
   return (
-    <>
-     
-    </>
-  )
+    <div className="min-h-screen bg-gray-50 text-gray-800">
+      <Routes>
+        <Route path="/" element={<h1 className="text-center mt-10 text-2xl font-bold">Welcome to Smart Freelance</h1>} />
+      </Routes>
+    </div>
+  );
 }
-
-export default App
