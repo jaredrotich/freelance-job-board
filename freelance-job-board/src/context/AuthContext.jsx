@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     //checking for user on initial load from local storage
     useEffect(() => {
         const storedUser = localStorage.getItem("user");
-        if (storedUser) setUser(JSON.parse(sroredUser));
+        if (storedUser) setUser(JSON.parse(storedUser));
     }, []);
 
     //login function

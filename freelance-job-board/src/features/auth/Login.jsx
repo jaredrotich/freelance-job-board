@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import "./Login.css"; // make sure this CSS file exists and is linked
 
 export default function Login() {
   const { login } = useAuth();
@@ -12,25 +13,24 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Mock validation: any email/password is accepted for now
     if (email && password) {
-      const fakeUser = { email }; 
-      login(fakeUser); // save to context and localStorage
-      navigate("/"); // redirect to homepage or dashboard
+      const fakeUser = { email };
+      login(fakeUser);
+      navigate("/");
     } else {
       alert("Please enter both email and password.");
     }
   };
 
   return (
-    <div className="max-w-md mx-auto mt-16 p-6 bg-white rounded-xl shadow-md">
-      <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="login-container">
+      <h2 className="login-title">Login</h2>
+      <form onSubmit={handleSubmit} className="login-form">
         <div>
-          <label className="block text-sm font-medium text-gray-700">Email</label>
+          <label className="login-label">Email</label>
           <input
             type="email"
-            className="w-full border border-gray-300 rounded-lg p-2 mt-1"
+            className="login-input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
@@ -38,20 +38,17 @@ export default function Login() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Password</label>
+          <label className="login-label">Password</label>
           <input
             type="password"
-            className="w-full border border-gray-300 rounded-lg p-2 mt-1"
+            className="login-input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••••"
           />
         </div>
 
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition"
-        >
+        <button type="submit" className="login-button">
           Sign In
         </button>
       </form>
